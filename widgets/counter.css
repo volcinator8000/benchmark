@@ -1,0 +1,5 @@
+.w-counter .ctr { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 12px 0; }
+.w-counter .ctr-value { font-size: 48px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 2ch; text-align: center; }
+.w-counter .ctr-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--text); font-size: 22px; cursor: pointer; }
+.w-counter .ctr-btn:hover { border-color: var(--accent); color: var(--accent); }
+.w-counter .ctr-foot { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }

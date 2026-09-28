@@ -1,0 +1,11 @@
+<article class="card size-{{size}}" id="w-{{id}}" data-widget="{{id}}" data-type="{{type}}">
+  <header class="card-head">
+    <input class="card-title" value="{{title}}" aria-label="Widget title" data-widget-cmd="title">
+    <span class="card-type">{{type_label}}</span>
+    <div class="card-tools">
+      <button type="button" class="icon-btn" data-widget-cmd="size" title="Resize ({{size}})">⇔</button>
+      <button type="button" class="icon-btn danger" data-widget-cmd="delete" title="Remove widget">×</button>
+    </div>
+  </header>
+  <div class="card-body w-{{type}}">{{{body}}}</div>
+</article>

@@ -1,0 +1,11 @@
+{
+  "label": "Checklist",
+  "description": "Tick-off list with drag-to-reorder.",
+  "defaults": {
+    "items": [
+      { "text": "Build with make", "done": true },
+      { "text": "Create a custom widget type", "done": false },
+      { "text": "Drag this item around", "done": false }
+    ]
+  }
+}

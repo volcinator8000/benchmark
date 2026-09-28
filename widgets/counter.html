@@ -1,0 +1,9 @@
+<div class="ctr">
+  <button type="button" class="ctr-btn" data-op="inc" data-path="value" data-by="-1" aria-label="Decrease">−</button>
+  <output class="ctr-value">{{value}}</output>
+  <button type="button" class="ctr-btn" data-op="inc" data-path="value" data-by="1" aria-label="Increase">+</button>
+</div>
+<div class="ctr-foot">
+  {{#if goal}}<span class="muted">Goal: {{goal}}</span>{{/if}}
+  <button type="button" class="btn small" data-op="set" data-path="value" data-value="0">Reset</button>
+</div>

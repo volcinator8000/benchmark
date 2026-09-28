@@ -1,0 +1,71 @@
+<header class="board-head">
+  <div>
+    <h1>Widget Studio</h1>
+    <p class="muted">Design a widget type. Everything here uses the public API — <code>POST /api/preview</code> for the live preview, <code>POST /api/types</code> to save.</p>
+  </div>
+</header>
+
+<div class="studio">
+  <form class="studio-form" id="studio-form" autocomplete="off">
+    <div class="row">
+      <label>Name <small>[a-z0-9-]</small><input name="name" required pattern="[a-z0-9\-]{1,32}" placeholder="poll"></label>
+      <label>Label<input name="label" placeholder="Poll"></label>
+    </div>
+    <label>Template
+      <textarea name="template" rows="12" spellcheck="false" class="code" required></textarea>
+    </label>
+    <label>Default data <small>(JSON — each new widget starts with this)</small>
+      <textarea name="defaults" rows="6" spellcheck="false" class="code">{}</textarea>
+    </label>
+    <label>CSS <small>(tip: scope rules under <code>.w-&lt;name&gt;</code>)</small>
+      <textarea name="css" rows="5" spellcheck="false" class="code"></textarea>
+    </label>
+    <div class="studio-actions">
+      <button class="btn primary" type="submit">Save type</button>
+      <button class="btn" type="button" id="studio-example">Load example</button>
+      <span class="studio-status muted" id="studio-status"></span>
+    </div>
+  </form>
+
+  <div class="studio-side">
+    <h2>Preview</h2>
+    <div class="card size-normal preview-card">
+      <header class="card-head"><span class="card-title-static">Preview</span></header>
+      <div class="card-body" id="studio-preview"></div>
+    </div>
+    <style id="studio-css"></style>
+
+    <h2>Types</h2>
+    <ul class="type-list" id="type-list">
+      {{#each types}}
+      <li>
+        <div><strong>{{label}}</strong> <code>{{name}}</code>{{#if builtin}} <span class="pill">built-in</span>{{/if}}</div>
+        <div class="type-actions">
+          <button class="btn small" data-studio-load="{{name}}">{{#if builtin}}Copy{{else}}Edit{{/if}}</button>
+          {{#unless builtin}}<button class="btn small danger" data-studio-delete="{{name}}">Delete</button>{{/unless}}
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+
+    <details class="cheatsheet">
+      <summary>Template &amp; op cheatsheet</summary>
+      <pre>&#123;&#123;name&#125;&#125;           escaped value
+&#123;&#123;&#123;html&#125;&#125;&#125;         raw value
+&#123;&#123;#each items&#125;&#125; … &#123;&#123;else&#125;&#125; … &#123;&#123;/each&#125;&#125;
+&#123;&#123;#if x&#125;&#125; … &#123;&#123;else&#125;&#125; … &#123;&#123;/if&#125;&#125;   &#123;&#123;#unless x&#125;&#125;
+&#123;&#123;@index&#125;&#125; &#123;&#123;@first&#125;&#125; &#123;&#123;@last&#125;&#125; &#123;&#123;@key&#125;&#125;
+&#123;&#123;@path&#125;&#125;          JSON path of the current item
+&#123;&#123;items.length&#125;&#125;   &#123;&#123;../x&#125;&#125;   &#123;&#123;@root.x&#125;&#125;   &#123;&#123;@widget.title&#125;&#125;
+
+Interactivity — no JS needed, just attributes:
+&lt;button data-op="inc" data-path="n" data-by="-1"&gt;
+&lt;button data-op="set" data-path="x" data-value='"hi"'&gt;
+&lt;input type="checkbox" data-op="toggle" data-path="&#123;&#123;@path&#125;&#125;.done"&gt;
+&lt;textarea data-op="set" data-path="text"&gt;
+&lt;form data-op="push" data-path="items"&gt;&lt;input name="text"&gt;&lt;/form&gt;
+&lt;button data-op="remove" data-path="&#123;&#123;@path&#125;&#125;"&gt;
+&lt;li draggable="true" data-drag="&#123;&#123;@path&#125;&#125;"&gt;  inside  &lt;ul data-drop="items"&gt;</pre>
+    </details>
+  </div>
+</div>

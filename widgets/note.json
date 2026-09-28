@@ -1,0 +1,5 @@
+{
+  "label": "Note",
+  "description": "A plain-text note.",
+  "defaults": { "text": "Anything you type here is stored in the widget's JSON data." }
+}

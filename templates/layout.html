@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}} · Widget Board</title>
+<link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/types.css" id="types-css">
+</head>
+<body class="page-{{page}}">
+<nav class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">▦</span> Widget Board</a>
+  <div class="nav-links">
+    <a href="/" class="nav-dashboard">Board</a>
+    <a href="/studio" class="nav-studio">Studio</a>
+  </div>
+</nav>
+<main>
+{{{body}}}
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

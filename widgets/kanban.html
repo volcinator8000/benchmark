@@ -1,0 +1,27 @@
+<div class="kb">
+  {{#each columns}}
+  <section class="kb-col">
+    <header class="kb-col-head">
+      <span class="kb-col-name">{{name}}</span>
+      <span class="kb-count">{{cards.length}}</span>
+      <button type="button" class="kb-x" data-op="remove" data-path="{{@path}}" title="Remove column">×</button>
+    </header>
+    <div class="kb-cards" data-drop="{{@path}}.cards">
+      {{#each cards}}
+      <div class="kb-card" draggable="true" data-drag="{{@path}}">
+        <span class="kb-card-title">{{title}}</span>
+        <button type="button" class="kb-x" data-op="remove" data-path="{{@path}}" title="Delete card">×</button>
+      </div>
+      {{else}}
+      <div class="kb-empty">Drop cards here</div>
+      {{/each}}
+    </div>
+    <form class="kb-add" data-op="push" data-path="{{@path}}.cards">
+      <input name="title" placeholder="+ Add a card" required maxlength="200">
+    </form>
+  </section>
+  {{/each}}
+  <form class="kb-col kb-new-col" data-op="push" data-path="columns">
+    <input name="name" placeholder="+ New column" required maxlength="60">
+  </form>
+</div>

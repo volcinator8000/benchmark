@@ -1,0 +1,8 @@
+# build output
+/board
+*.o
+/tests/test_tmpl
+
+# runtime database (recreated with demo data on first start)
+/board.json
+/board.json.tmp

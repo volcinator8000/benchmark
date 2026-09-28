@@ -1,0 +1,5 @@
+{
+  "label": "Counter",
+  "description": "A number you bump up and down.",
+  "defaults": { "value": 0, "goal": 4 }
+}

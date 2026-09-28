@@ -1,0 +1,16 @@
+<ul class="cl" data-drop="items">
+  {{#each items}}
+  <li class="cl-item{{#if done}} is-done{{/if}}" draggable="true" data-drag="{{@path}}">
+    <label>
+      <input type="checkbox" data-op="toggle" data-path="{{@path}}.done"{{#if done}} checked{{/if}}>
+      <span>{{text}}</span>
+    </label>
+    <button type="button" class="cl-x" data-op="remove" data-path="{{@path}}" title="Remove">×</button>
+  </li>
+  {{else}}
+  <li class="cl-empty">Nothing to do 🎉</li>
+  {{/each}}
+</ul>
+<form class="cl-add" data-op="push" data-path="items">
+  <input name="text" placeholder="Add an item and press Enter" required maxlength="200">
+</form>

@@ -1,0 +1,17 @@
+<header class="board-head">
+  <div>
+    <h1>Board</h1>
+    <p class="muted">Every widget is server-rendered by the C template engine. Drag cards, tick boxes, type — it all goes through <code>POST /api/widgets/:id/op</code>.</p>
+  </div>
+  <form class="add-widget" id="add-widget">
+    <select name="type" aria-label="Widget type">
+      {{#each types}}<option value="{{name}}">{{label}}</option>{{/each}}
+    </select>
+    <input name="title" placeholder="Title (optional)" autocomplete="off">
+    <button class="btn primary" type="submit">Add widget</button>
+  </form>
+</header>
+
+<section class="grid" id="grid">
+  {{#each cards}}{{{.}}}{{else}}<p class="empty-board muted">No widgets yet — add one above.</p>{{/each}}
+</section>

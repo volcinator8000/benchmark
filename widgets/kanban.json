@@ -1,0 +1,11 @@
+{
+  "label": "Kanban",
+  "description": "Columns of draggable cards.",
+  "defaults": {
+    "columns": [
+      { "name": "To do", "cards": [ { "title": "Write the HTTP server" }, { "title": "Design widget API" } ] },
+      { "name": "Doing", "cards": [ { "title": "Template engine in C" } ] },
+      { "name": "Done",  "cards": [ { "title": "Stack data structure" } ] }
+    ]
+  }
+}
