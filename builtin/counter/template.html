@@ -1,0 +1,9 @@
+<div class="counter">
+  <div class="counter-value">{{count}}</div>
+  <div class="counter-buttons">
+    <button data-delta="-1">&minus; {{step}}</button>
+    <button data-delta="1">+ {{step}}</button>
+    <button data-reset="1" class="subtle">reset</button>
+  </div>
+  <label class="counter-step">step <input type="number" name="step" value="{{step}}" min="1"></label>
+</div>

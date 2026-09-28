@@ -1,0 +1,5 @@
+{
+  "name": "stack",
+  "description": "LIFO stack: push and pop values",
+  "default_state": { "items": ["first in", "second", "top"], "max": 10 }
+}

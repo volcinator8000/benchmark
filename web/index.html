@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Widgets</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>Widgets</h1>
+    <span class="muted">{{widget_count}} widgets &middot; {{type_count}} types</span>
+  </div>
+  <div class="topbar-actions">
+    <div class="menu">
+      <button id="add-widget-btn" class="btn primary">+ Add widget</button>
+      <div class="menu-list" id="add-widget-menu" hidden>
+        {{#types}}
+        <button class="menu-item" data-type="{{name}}">
+          <b>{{name}}</b>{{#if builtin}}<span class="tag">built-in</span>{{/if}}
+          <small>{{description}}</small>
+        </button>
+        {{/types}}
+      </div>
+    </div>
+    <button id="types-btn" class="btn">Widget types</button>
+    <button id="new-type-btn" class="btn">New type</button>
+  </div>
+</header>
+
+<main id="board" class="board">
+  {{^widget_count}}
+  <div class="empty-board" id="empty-board">
+    <h2>No widgets yet</h2>
+    <p>Add one from the menu above, or define your own widget type.</p>
+  </div>
+  {{/widget_count}}
+</main>
+
+<template id="widget-shell">
+  <article class="widget">
+    <header class="widget-head">
+      <span class="widget-title" title="Click to rename"></span>
+      <span class="widget-type"></span>
+      <span class="spacer"></span>
+      <button class="icon" data-act="undo" title="Undo last change">&#8630;</button>
+      <button class="icon" data-act="refresh" title="Re-render">&#8635;</button>
+      <button class="icon danger" data-act="delete" title="Delete widget">&#10005;</button>
+    </header>
+    <div class="widget-body"></div>
+  </article>
+</template>
+
+<dialog id="types-dialog" class="dialog">
+  <header class="dialog-head"><h2>Widget types</h2><button class="icon" data-close>&#10005;</button></header>
+  <div id="types-list" class="types-list"></div>
+  <p class="muted small">Every type is a template rendered by the C engine, a default state, an optional script and stylesheet.
+    Built-in types cannot be edited, but any type can be cloned as a starting point.</p>
+</dialog>
+
+<dialog id="type-editor" class="dialog wide">
+  <header class="dialog-head"><h2 id="editor-title">New widget type</h2><button class="icon" data-close>&#10005;</button></header>
+  <form id="type-form" class="editor">
+    <div class="editor-grid">
+      <label>Name <input name="name" required pattern="[A-Za-z0-9_-]{1,64}" placeholder="my-widget"></label>
+      <label>Description <input name="description" placeholder="What it does"></label>
+    </div>
+    <label>Template <span class="hint">Mustache-style: <code>&#123;&#123;name&#125;&#125;</code>, <code>&#123;&#123;#list&#125;&#125;…&#123;&#123;/list&#125;&#125;</code>, <code>&#123;&#123;#if x&#125;&#125;…&#123;&#123;else&#125;&#125;…&#123;&#123;/if&#125;&#125;</code>, <code>&#123;&#123;@index&#125;&#125;</code>, <code>&#123;&#123;&#123;raw&#125;&#125;&#125;</code></span>
+      <textarea name="template" rows="8" spellcheck="false" required></textarea></label>
+    <label>Default state <span class="hint">JSON object; available to the template and to <code>widget.state</code> in the script</span>
+      <textarea name="default_state" rows="4" spellcheck="false">{}</textarea></label>
+    <label>Script <span class="hint">runs after each render with <code>el</code>, <code>widget</code>, <code>api</code>; call <code>api.ops([{op, path, value}])</code> to change state</span>
+      <textarea name="script" rows="6" spellcheck="false"></textarea></label>
+    <label>Style <span class="hint">CSS, injected globally; prefix selectors with your own class</span>
+      <textarea name="style" rows="3" spellcheck="false"></textarea></label>
+    <div class="editor-actions">
+      <button type="button" class="btn" id="preview-btn">Preview</button>
+      <span class="spacer"></span>
+      <span id="editor-error" class="error"></span>
+      <button type="submit" class="btn primary">Save type</button>
+    </div>
+  </form>
+  <div id="preview" class="preview" hidden></div>
+</dialog>
+
+<div id="toast" class="toast" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

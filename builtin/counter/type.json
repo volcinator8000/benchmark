@@ -1,0 +1,5 @@
+{
+  "name": "counter",
+  "description": "A counter with adjustable step",
+  "default_state": { "count": 0, "step": 1 }
+}

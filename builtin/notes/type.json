@@ -1,0 +1,5 @@
+{
+  "name": "notes",
+  "description": "Free-form text notes, saved as you type",
+  "default_state": { "text": "" }
+}

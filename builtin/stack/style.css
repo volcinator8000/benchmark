@@ -1,0 +1,8 @@
+.stack-push { display: flex; gap: 6px; margin-bottom: 10px; }
+.stack-push input { flex: 1; }
+.stack-items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column-reverse; gap: 4px; }
+.stack-item { background: var(--surface-3); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; display: flex; justify-content: space-between; }
+.stack-item.stack-top { border-color: var(--accent); }
+.stack-item small { color: var(--accent); }
+.stack-empty { color: var(--muted); text-align: center; padding: 10px; }
+.stack-meta { color: var(--muted); font-size: .85em; margin-top: 8px; text-align: right; }

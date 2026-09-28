@@ -1,0 +1,2 @@
+.notes-text { width: 100%; min-height: 160px; resize: vertical; font: inherit; line-height: 1.5; }
+.notes-status { color: var(--muted); font-size: .8em; text-align: right; min-height: 1.2em; margin-top: 4px; }

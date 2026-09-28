@@ -1,0 +1,7 @@
+widgets
+widgets-asan
+tests/test_stack
+tests/test_json
+tests/test_template
+data/
+*.tmp

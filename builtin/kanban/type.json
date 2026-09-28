@@ -1,0 +1,11 @@
+{
+  "name": "kanban",
+  "description": "Kanban board with drag-and-drop cards",
+  "default_state": {
+    "columns": [
+      { "title": "To do", "cards": [ { "text": "Write the template engine" }, { "text": "Wire up the API" } ] },
+      { "title": "Doing", "cards": [ { "text": "Build the kanban widget" } ] },
+      { "title": "Done", "cards": [ { "text": "Implement the stack" } ] }
+    ]
+  }
+}

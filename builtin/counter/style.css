@@ -1,0 +1,6 @@
+.counter { text-align: center; }
+.counter-value { font-size: 48px; font-weight: 700; font-variant-numeric: tabular-nums; margin: 4px 0 10px; }
+.counter-buttons { display: flex; gap: 8px; justify-content: center; }
+.counter-buttons button { min-width: 64px; }
+.counter-step { display: block; margin-top: 12px; color: var(--muted); font-size: .85em; }
+.counter-step input { width: 64px; margin-left: 6px; }

@@ -1,0 +1,15 @@
+<div class="stack">
+  <form class="stack-push">
+    <input name="value" placeholder="Value to push" autocomplete="off">
+    <button type="submit">Push</button>
+    <button type="button" class="stack-pop" {{^items}}disabled{{/items}}>Pop</button>
+  </form>
+  <ul class="stack-items">
+    {{#items}}
+    <li class="stack-item {{#if @last}}stack-top{{/if}}"><span>{{.}}</span>{{#if @last}}<small>top</small>{{/if}}</li>
+    {{else}}
+    <li class="stack-empty">Stack is empty</li>
+    {{/items}}
+  </ul>
+  <div class="stack-meta">depth {{#items}}{{#if @first}}{{@length}}{{/if}}{{/items}}{{^items}}0{{/items}} / {{max}}</div>
+</div>

@@ -1,0 +1,28 @@
+<div class="kanban">
+  {{#columns}}
+  <section class="kanban-col" data-col="{{@index}}">
+    <header class="kanban-col-head">
+      <span class="kanban-col-title" contenteditable="true" spellcheck="false" data-col="{{@index}}">{{title}}</span>
+      <button class="kanban-x" data-action="del-col" data-col="{{@index}}" title="Remove column">&times;</button>
+    </header>
+    <div class="kanban-cards" data-col="{{@index}}">
+      {{#cards}}
+      <div class="kanban-card" draggable="true" data-col="{{@../index}}" data-idx="{{@index}}">
+        <span class="kanban-card-text">{{text}}</span>
+        <button class="kanban-x" data-action="del-card" data-col="{{@../index}}" data-idx="{{@index}}" title="Delete card">&times;</button>
+      </div>
+      {{else}}
+      <div class="kanban-empty">Drop cards here</div>
+      {{/cards}}
+    </div>
+    <form class="kanban-add" data-col="{{@index}}">
+      <input name="text" placeholder="Add a card" autocomplete="off">
+      <button type="submit">+</button>
+    </form>
+  </section>
+  {{/columns}}
+  <form class="kanban-add-col">
+    <input name="title" placeholder="New column" autocomplete="off">
+    <button type="submit">+ Column</button>
+  </form>
+</div>
